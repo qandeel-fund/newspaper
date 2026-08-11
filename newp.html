@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleq.css">
+
+
+    <title>جريدة قنديل</title>
+
+    <!-- 1. أكواد الـ CSS (الستايل) -->
+    <style>
+
+
+        /* =======================================================
+           تنسيقات قسم جريدة قنديل والنافذة الانبثاقية
+           ======================================================= */
+            @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+
+
+        body {
+    /* 2. تطبيق الخط على كامل الصفحة */
+    font-family: 'Cairo', sans-serif !important;
+    background-color: #f9fbf9;
+    margin: 0;
+    padding: 20px;
+    direction: rtl;
+}
+
+        .qandil-newspaper-section {
+            padding: 20px 10px;
+        }
+
+        .newspaper-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .newspaper-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #2A5647;
+            margin-bottom: 8px;
+        }
+
+        .newspaper-subtitle {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #D2B372; /* اللون الذهبي */
+    margin-top: 5px;
+}
+
+        /* شبكة عرض البطاقات */
+        .newspaper-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .newspaper-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .newspaper-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(42, 86, 71, 0.12);
+        }
+
+        .issue-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #D2B372;
+            color: #4A3A10;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            z-index: 2;
+        }
+
+        .newspaper-cover {
+            position: relative;
+            height: 320px;
+            background: #f4f6f5;
+            overflow: hidden;
+        }
+
+        .newspaper-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .newspaper-card:hover .newspaper-cover img {
+            transform: scale(1.05);
+        }
+
+        .cover-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(42, 86, 71, 0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .newspaper-card:hover .cover-overlay {
+            opacity: 1;
+        }
+
+        .view-btn {
+            background: #D2B372;
+            color: #2A5647;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 800;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .newspaper-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .issue-date {
+            font-size: 0.85rem;
+            color: #72B192;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .issue-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #2A5647;
+            margin-bottom: 10px;
+        }
+
+        .issue-snippet {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .newspaper-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-link {
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 12px;
+            font-weight: 700;
+            padding: 10px 16px;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+
+        .action-link.main {
+            background: #2A5647;
+            color: #ffffff;
+            flex-grow: 1;
+        }
+
+        .action-link.main:hover {
+            background: #1D3D32;
+        }
+
+        .action-link.icon-only {
+            background: #f0f4f2;
+            color: #2A5647;
+            border: 1px solid #d8e3de;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* تنسيق النافذة الانبثاقية (Modal) */
+        .flipbook-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(5px);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .flipbook-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            width: 90%;
+            max-width: 1000px;
+            height: 85vh;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-header {
+            background: #2A5647;
+            color: #ffffff;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-body {
+            flex-grow: 1;
+            width: 100%;
+            height: 100%;
+            background: #f0f0f0;
+        }
+
+        .modal-body iframe {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container navbar">
+        <!-- الشعار في الأعلى ليكون بالوسط تماماً -->
+        <div class="nav-logo-row">
+            <a href="index.html#hero">
+                <img src="شفاف%20%20قنديل.png" alt="شعار مصياف قنديل" class="nav-logo">
+            </a>
+        </div>
+
+        <!-- روابط التنقل تحت الشعار مباشرة -->
+        <div class="nav-links-row">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" title="الرئيسية"> الرئيسيـة </a></li>
+                    <li><a href="index.html#stats">قنديل في أرقام</a></li>
+                    <li><a href="all.html">قنـاديــل مصيـاف</a></li>
+                    <li><a href="newp.html">جريـدة قنديـل</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- 3. زر كن مضيئاً بحجم صغير وملموم في الأسفل -->
+        <div class="nav-bottom-row">
+            <a href="IBAN.html" target="_blank" class="nav-support-btn">
+                كُـــن مــضــيـئًـا <i class="fa-solid fa-hand-holding-heart"></i>
+            </a>
+        </div>
+
+    </div>
+</header>
+    <!-- 2. أجزاء الـ HTML -->
+    <section class="qandil-newspaper-section">
+        <div class="newspaper-header">
+            <h2 class="newspaper-title">جريدة قنديل 📰</h2>
+            <p class="newspaper-subtitle">أخبار سعيدة، إنجازات، ولحظات لا تُنسى لـ آل قنديل</p>
+        </div>
+
+        <div class="newspaper-grid">
+
+            <!-- الإصدار الثاني -->
+            <div class="newspaper-card">
+                <div class="issue-badge">أحدث إصدار 🔥</div>
+                <div class="newspaper-cover">
+                    <img src="غلاف.png" alt="غلاف الإصدار الثاني">
+                    <div class="cover-overlay">
+                        <button class="view-btn" onclick="openFlipbook('issue-2.pdf', 'الإصدار الثاني')">
+                            تصفح الجريدة 📖
+                        </button>
+                    </div>
+                </div>
+                <div class="newspaper-info">
+                    <span class="issue-date">🗓️ الإصدار الثاني</span>
+                    <h3 class="issue-title">حصاد العائلة وأفراحها</h3>
+<p class="issue-snippet">      نجاحات العائلة ، وإعلان الفائزين بمصياف العائلة ..</p>
+                    <div class="newspaper-actions">
+                        <button class="action-link main" onclick="openFlipbook('issue-2.pdf', 'الإصدار الثاني')">
+                            قراءة الإصدار 📖
+                        </button>
+                        <a href="issue-2.pdf" download class="action-link icon-only" title="تحميل PDF">📥</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الإصدار الأول -->
+            <div class="newspaper-card">
+                <div class="newspaper-cover">
+                    <img src="غلاف.png" alt="غلاف الإصدار الأول">
+                    <div class="cover-overlay">
+                        <button class="view-btn" onclick="openFlipbook('issue-1.pdf', 'الإصدار الأول')">
+                            تصفح الجريدة 📖
+                        </button>
+                    </div>
+                </div>
+                <div class="newspaper-info">
+                    <span class="issue-date">🗓️ الإصدار الأول</span>
+                    <h3 class="issue-title">انطلاقة جريدة قنديل الأولى</h3>
+                    <p class="issue-snippet">الإصدار الافتتاحي الخاص بأخبار وأفراح آل قنديل ..</p>
+                    <div class="newspaper-actions">
+                        <button class="action-link main" onclick="openFlipbook('issue-1.pdf', 'الإصدار الأول')">
+                            قراءة الإصدار 📖
+                        </button>
+                        <a href="new1.pdf" download class="action-link icon-only" title="تحميل PDF">📥</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- النافذة الانبثاقية -->
+    <!-- النافذة الانبثاقية -->
+<div id="flipbookModal" class="flipbook-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">تصفح الجريدة</h3>
+            <button class="close-modal" onclick="closeFlipbook()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <!-- سيتم تحميل الـ PDF هنا تلقائياً -->
+        </div>
+    </div>
+</div>
+
+    <!-- 3. أكواد الجافاسكريبت JS -->
+    <script>
+function openFlipbook(pdfUrl, title) {
+    const modal = document.getElementById('flipbookModal');
+    const modalBody = document.querySelector('.modal-body');
+    const modalTitle = document.getElementById('modalTitle');
+
+    modalTitle.textContent = "جريدة قنديل - " + title;
+
+    // إصلاح المسار تلقائياً لمنع إلحاقه بملف الـ script.js
+    const cleanUrl = pdfUrl.startsWith('/') ? pdfUrl : '/' + pdfUrl;
+
+    modalBody.innerHTML = `<embed src="${cleanUrl}#toolbar=0&navpanes=0" type="application/pdf" width="100%" height="100%" />`;
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeFlipbook() {
+    const modal = document.getElementById('flipbookModal');
+    const modalBody = document.querySelector('.modal-body');
+
+    modal.classList.remove('active');
+    modalBody.innerHTML = ''; // تفريغ الحاوية عند الإغلاق
+    document.body.style.overflow = 'auto';
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById('flipbookModal');
+    if (event.target === modal) {
+        closeFlipbook();
+    }
+}
+    </script>
+</body>
+</html>
