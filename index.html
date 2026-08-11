@@ -19,13 +19,20 @@
    ======================================================= */
 
 /* 1. ضبط مسافة الهيدر لتطابق الصفحة الرئيسية */
+/* ضبط المسافة العلوية لجميع الشاشات والجوالات */
 body {
-    padding-top: 195px !important;
+    font-family: 'Cairo', sans-serif !important;
+    background-color: #f9fbf9;
+    margin: 0;
+    padding: 0;
+    padding-top: 195px !important; /* مسافة كافية لمنع اختفاء العنوان خلف الهيدر */
+    direction: rtl;
 }
 
+/* ضبط المسافة المخصصة للجوال والآيفون */
 @media (max-width: 440px) {
     body {
-        padding-top: 105px !important;
+        padding-top: 180px !important; /* زيادة المسافة للجوال حتى يظهر العنوان كاملاً */
     }
 }
 
