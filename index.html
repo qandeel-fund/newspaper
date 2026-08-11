@@ -5,27 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styleq.css">
 
-
     <title>جريدة قنديل</title>
 
     <!-- 1. أكواد الـ CSS (الستايل) -->
     <style>
-
-
         /* =======================================================
            تنسيقات قسم جريدة قنديل والنافذة الانبثاقية
            ======================================================= */
-            @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
-
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
 
         body {
-    /* 2. تطبيق الخط على كامل الصفحة */
-    font-family: 'Cairo', sans-serif !important;
-    background-color: #f9fbf9;
-    margin: 0;
-    padding: 20px;
-    direction: rtl;
-}
+            font-family: 'Cairo', sans-serif !important;
+            background-color: #f9fbf9;
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+        }
 
         .qandil-newspaper-section {
             padding: 20px 10px;
@@ -44,11 +39,11 @@
         }
 
         .newspaper-subtitle {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: #D2B372; /* اللون الذهبي */
-    margin-top: 5px;
-}
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #D2B372;
+            margin-top: 5px;
+        }
 
         /* شبكة عرض البطاقات */
         .newspaper-grid {
@@ -264,24 +259,17 @@
             height: 100%;
             background: #f0f0f0;
         }
-
-        .modal-body iframe {
-            width: 100%;
-            height: 100%;
-        }
     </style>
 </head>
 <body>
 <header>
     <div class="container navbar">
-        <!-- الشعار في الأعلى ليكون بالوسط تماماً -->
         <div class="nav-logo-row">
             <a href="index.html#hero">
                 <img src="شفاف%20%20قنديل.png" alt="شعار مصياف قنديل" class="nav-logo">
             </a>
         </div>
 
-        <!-- روابط التنقل تحت الشعار مباشرة -->
         <div class="nav-links-row">
             <nav>
                 <ul class="nav-links">
@@ -293,16 +281,15 @@
             </nav>
         </div>
 
-        <!-- 3. زر كن مضيئاً بحجم صغير وملموم في الأسفل -->
         <div class="nav-bottom-row">
             <a href="IBAN.html" target="_blank" class="nav-support-btn">
                 كُـــن مــضــيـئًـا <i class="fa-solid fa-hand-holding-heart"></i>
             </a>
         </div>
-
     </div>
 </header>
-    <!-- 2. أجزاء الـ HTML -->
+
+    <!-- أجزاء الـ HTML -->
     <section class="qandil-newspaper-section">
         <div class="newspaper-header">
             <h2 class="newspaper-title">جريدة قنديل 📰</h2>
@@ -311,36 +298,36 @@
 
         <div class="newspaper-grid">
 
-            <!-- الإصدار الثاني -->
+            <!-- الإصدار الثاني (new2.pdf) -->
             <div class="newspaper-card">
                 <div class="issue-badge">أحدث إصدار 🔥</div>
                 <div class="newspaper-cover">
                     <img src="غلاف.png" alt="غلاف الإصدار الثاني">
                     <div class="cover-overlay">
-                        <button class="view-btn" onclick="openFlipbook('issue-2.pdf', 'الإصدار الثاني')">
+                        <button class="view-btn" onclick="openFlipbook('new2.pdf', 'الإصدار الثاني')">
                             تصفح الجريدة 📖
                         </button>
                     </div>
                 </div>
                 <div class="newspaper-info">
                     <span class="issue-date">🗓️ الإصدار الثاني</span>
-                    <h3 class="issue-title">حصاد العائلة وأفراحها</h3>
-<p class="issue-snippet">      نجاحات العائلة ، وإعلان الفائزين بمصياف العائلة ..</p>
+                    <h3 class="issue-title">إنجازات، تباشير، وتكريمات</h3>
+                    <p class="issue-snippet">تغطية لنجاحات العائلة، ومقدم المواليد الجدد (تركي وسعود)، وإعلان الفائزين بمصياف العائلة...</p>
                     <div class="newspaper-actions">
-                        <button class="action-link main" onclick="openFlipbook('issue-2.pdf', 'الإصدار الثاني')">
+                        <button class="action-link main" onclick="openFlipbook('new2.pdf', 'الإصدار الثاني')">
                             قراءة الإصدار 📖
                         </button>
-                        <a href="issue-2.pdf" download class="action-link icon-only" title="تحميل PDF">📥</a>
+                        <a href="new2.pdf" download class="action-link icon-only" title="تحميل PDF">📥</a>
                     </div>
                 </div>
             </div>
 
-            <!-- الإصدار الأول -->
+            <!-- الإصدار الأول (new1.pdf) -->
             <div class="newspaper-card">
                 <div class="newspaper-cover">
                     <img src="غلاف.png" alt="غلاف الإصدار الأول">
                     <div class="cover-overlay">
-                        <button class="view-btn" onclick="openFlipbook('issue-1.pdf', 'الإصدار الأول')">
+                        <button class="view-btn" onclick="openFlipbook('new1.pdf', 'الإصدار الأول')">
                             تصفح الجريدة 📖
                         </button>
                     </div>
@@ -350,7 +337,7 @@
                     <h3 class="issue-title">انطلاقة جريدة قنديل الأولى</h3>
                     <p class="issue-snippet">الإصدار الافتتاحي الخاص بأخبار وأفراح آل قنديل ..</p>
                     <div class="newspaper-actions">
-                        <button class="action-link main" onclick="openFlipbook('issue-1.pdf', 'الإصدار الأول')">
+                        <button class="action-link main" onclick="openFlipbook('new1.pdf', 'الإصدار الأول')">
                             قراءة الإصدار 📖
                         </button>
                         <a href="new1.pdf" download class="action-link icon-only" title="تحميل PDF">📥</a>
@@ -362,20 +349,19 @@
     </section>
 
     <!-- النافذة الانبثاقية -->
-    <!-- النافذة الانبثاقية -->
-<div id="flipbookModal" class="flipbook-modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h3 id="modalTitle">تصفح الجريدة</h3>
-            <button class="close-modal" onclick="closeFlipbook()">&times;</button>
-        </div>
-        <div class="modal-body">
-            <!-- سيتم تحميل الـ PDF هنا تلقائياً -->
+    <div id="flipbookModal" class="flipbook-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">تصفح الجريدة</h3>
+                <button class="close-modal" onclick="closeFlipbook()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- سيتم تحميل الـ PDF هنا تلقائياً -->
+            </div>
         </div>
     </div>
-</div>
 
-    <!-- 3. أكواد الجافاسكريبت JS -->
+    <!-- أكواد الجافاسكريبت JS -->
     <script>
 function openFlipbook(pdfUrl, title) {
     const modal = document.getElementById('flipbookModal');
@@ -384,10 +370,8 @@ function openFlipbook(pdfUrl, title) {
 
     modalTitle.textContent = "جريدة قنديل - " + title;
 
-    // إصلاح المسار تلقائياً لمنع إلحاقه بملف الـ script.js
-    const cleanUrl = pdfUrl.startsWith('/') ? pdfUrl : '/' + pdfUrl;
-
-    modalBody.innerHTML = `<embed src="${cleanUrl}#toolbar=0&navpanes=0" type="application/pdf" width="100%" height="100%" />`;
+    // استخدام اسم الملف المباشر ليعمل بسلاسة على GitHub Pages
+    modalBody.innerHTML = `<embed src="${pdfUrl}#toolbar=0&navpanes=0" type="application/pdf" width="100%" height="100%" />`;
 
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -398,7 +382,7 @@ function closeFlipbook() {
     const modalBody = document.querySelector('.modal-body');
 
     modal.classList.remove('active');
-    modalBody.innerHTML = ''; // تفريغ الحاوية عند الإغلاق
+    modalBody.innerHTML = '';
     document.body.style.overflow = 'auto';
 }
 
