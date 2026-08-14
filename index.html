@@ -17,14 +17,12 @@
 <body>
 <header>
     <div class="container navbar">
-        <!-- الشعار في الأعلى ليكون بالوسط تماماً -->
         <div class="nav-logo-row">
             <a href="index.html#hero">
                 <img src="شفاف%20%20قنديل.png" alt="شعار مصياف قنديل" class="nav-logo">
             </a>
         </div>
 
-        <!-- روابط التنقل تحت الشعار مباشرة -->
         <div class="nav-links-row">
             <nav>
                 <ul class="nav-links">
@@ -36,245 +34,101 @@
             </nav>
         </div>
 
-        <!-- 3. زر كن مضيئاً بحجم صغير وملموم في الأسفل -->
         <div class="nav-bottom-row">
             <a href="IBAN.html" class="nav-support-btn">
                 كُـــن مــضــيـئًـا <i class="fa-solid fa-hand-holding-heart"></i>
             </a>
         </div>
-
     </div>
 </header>
 
 <section class="hero-section" id="hero">
     <div class="container hero-container">
-
-        <h1 class="welcome-title"> <span class="brand-name"></span></h1>
-
+        <h1 class="welcome-title"><span class="brand-name"></span></h1>
         <div class="hero-intro-content">
             <h2 class="hero-main-text">مـع "قنـديل" نتعـلم ونؤمـن ونُـزهِـر</h2>
             <p class="hero-sub-text">أكثـر مـن برنـامج .. حـصص قرآنيـة ، دروس إيمانيـة ، آداب وأخـلاق ، مهـارات وترفيـه</p>
-            <p class="hero-vision-text">نسعدُ بكم وبأطفالكم ،
-لِنكملَ الحكاية بلونٍ جديد وعزمٍ أكيد🌱</p>
+            <p class="hero-vision-text">نسعدُ بكم وبأطفالكم ، لِنكملَ الحكاية بلونٍ جديد وعزمٍ أكيد🌱</p>
         </div>
-
     </div>
 </section>
 
-    <!-- لوحة التفاعل الرئيسية (المقسمة لعمودين يمين ويسار) -->
-    <section id="main-dashboard" class="dashboard-section">
-        <div class="container dashboard-grid">
-
-            <!-- العمود الأيمن: الحصالة ممتدة بالطول -->
-            <div class="right-column-box">
-                <div class="section-title-box">
-                    <h2>🌙حصالة دعم برنامج قنديل لحفظ الوحيين </h2>
-                    <p>لنُحـقـق الهدف معًـا خطوةٍ بِخطوة</p>
+<!-- لوحة التفاعل الرئيسية -->
+<section id="main-dashboard" class="dashboard-section">
+    <div class="container dashboard-grid">
+        <!-- العمود الأيمن: الحصالة -->
+        <div class="right-column-box">
+            <div class="section-title-box">
+                <h2>🌙حصالة دعم برنامج قنديل لحفظ الوحيين </h2>
+                <p>لنُحـقـق الهدف معًـا خطوةٍ بِخطوة</p>
+            </div>
+            <div class="money-box-img-container">
+                <img src="حصالةقنديل.png" alt="حصالة قنديل الكبيرة" class="money-box-large-img">
+            </div>
+            <div class="progress-container-box">
+                <div class="progress-info-top">
+                    <span>المبلغ الحالي: <strong id="current-amount">1000</strong> ر.س</span>
+                    <span class="goal-text">الهدف: <strong id="goal-amount">50000</strong> ر.س</span>
                 </div>
-                <!-- صورة الحصالة الكبيرة -->
-                <div class="money-box-img-container">
-                    <img src="حصالةقنديل.png" alt="حصالة قنديل الكبيرة" class="money-box-large-img">
+                <div class="progress-bar-bg">
+                    <div id="progress-fill" class="progress-bar-fill" style="width: 2%;"></div>
                 </div>
-                <!-- عداد الحصالة أسفل الصورة -->
-                <div class="progress-container-box">
-                    <div class="progress-info-top">
-                        <span>المبلغ الحالي: <strong id="current-amount">1000</strong> ر.س</span>
-                        <span class="goal-text">الهدف: <strong id="goal-amount">50000</strong> ر.س</span>
-                    </div>
-
-                    <div class="progress-bar-bg">
-                        <div id="progress-fill" class="progress-bar-fill" style="width: 2%;"></div>
-                    </div>
-
-                    <div class="progress-info-bottom">
-                        <span>المبلـغ المتبقي : <strong id="remaining-amount">0</strong> ر.س</span>
-                    </div>
+                <div class="progress-info-bottom">
+                    <span>المبلـغ المتبقي : <strong id="remaining-amount">0</strong> ر.س</span>
                 </div>
+            </div>
 
-                <div class="families-legend">
-                    <div class="legend-item">
-                        <span class="color-box" style="background-color: #D2B372;"></span> <span class="family-name">آل وصـل (1000 ر.س)</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="color-box" style="background-color: #72B192;"></span> <span class="family-name">آل مثـل (0 ر.س)</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="color-box" style="background-color: #E6CE9A;"></span> <span class="family-name">آل مريـط (0 ر.س)</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="color-box" style="background-color: #2A5647;"></span> <span class="family-name">آل عيـد (0 ر.س)</span>
-                    </div>
-                </div>
+            <div class="families-legend">
+                <div class="legend-item"><span class="color-box" style="background-color: #D2B372;"></span> <span class="family-name">آل وصـل (1000 ر.س)</span></div>
+                <div class="legend-item"><span class="color-box" style="background-color: #72B192;"></span> <span class="family-name">آل مثـل (0 ر.س)</span></div>
+                <div class="legend-item"><span class="color-box" style="background-color: #E6CE9A;"></span> <span class="family-name">آل مريـط (0 ر.س)</span></div>
+                <div class="legend-item"><span class="color-box" style="background-color: #2A5647;"></span> <span class="family-name">آل عيـد (0 ر.س)</span></div>
+            </div>
 
-                <div class="milestone-text-only">
-                    <h6 class="milestone-title">
-                        <p>️بدعمـكم تُضيء شعلة قنديلنـا🕯️</p>
-                    </h6>
-                </div>
+            <div class="milestone-text-only">
+                <h6 class="milestone-title"><p>️بدعمـكم تُضيء شعلة قنديلنـا🕯️</p></h6>
+            </div>
 
-                <div class="motivation-btn-row">
-                    <a href="IBAN.html" class="btn-transfer-now">حــوّل الأن</a>
-                </div>
-            </div> <!-- إغلاق العمود الأيمن -->
-
-            <!-- العمود الأيسر: قسم أبطال مصياف قنديل (تصميم منصة التتويج) -->
-            <div class="left-column-box champions-section">
-                <h2 class="section-title">أبطال مصياف قنديل 🏆</h2>
-
-                <div class="categories-wrapper">
-
-                    <!-- 1. فئة البراعم -->
-                    <div class="category-column">
-                        <h3 class="category-header">فئـة البـراعـم </h3>
-
-                        <div class="podium-container">
-                            <!-- المركز الثاني (يمين) -->
-                            <div class="podium-step step-2">
-                                <div class="podium-avatar-wrapper">
-                                    <img src="شيخه%20معجب.jpeg" class="podium-avatar" alt="شيخـة معجـب">
-                                    <span class="podium-badge">2</span>
-                                </div>
-                                <span class="podium-name">شيخـة معجـب</span>
-                                <div class="podium-block">2</div>
-                            </div>
-
-                            <!-- المركز الأول (المنتصف) -->
-                            <div class="podium-step step-1">
-                                <div class="podium-avatar-wrapper">
-                                    <img src="شيهانه.png" class="podium-avatar" alt="شيهـانه محمـد">
-                                    <span class="podium-badge">1</span>
-                                </div>
-                                <span class="podium-name">شيهـانه محمـد</span>
-                                <div class="podium-block">1</div>
-                            </div>
-
-                            <!-- المركز الثالث (يسار) -->
-                            <div class="podium-step step-3">
-                                <div class="podium-avatar-wrapper">
-                                    <img src="فهاد.png" class="podium-avatar" alt="فهـاد إبراهيـم">
-                                    <span class="podium-badge">3</span>
-                                </div>
-                                <span class="podium-name">فهـاد إبراهيـم</span>
-                                <div class="podium-block">3</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2. فئة النجوم -->
-                    <div class="category-column">
-                        <h3 class="category-header">فئـة النجـوم </h3>
-
-                        <div class="podium-container">
-                            <div class="podium-step step-2">
-                                <div class="podium-avatar-wrapper">
-                                    <img src="زياد%20.jpeg" class="podium-avatar" alt="زيـاد محمد">
-                                    <span class="podium-badge">2</span>
-                                </div>
-                                <span class="podium-name">زيـاد محمد</span>
-                                <div class="podium-block">2</div>
-                            </div>
-
-                            <div class="podium-step step-1 step-tied">
-                                <div class="podium-avatar-wrapper tied-avatars">
-                                    <img src="غالب%20ضيف%20الله%20غالب.jpeg" class="podium-avatar" alt="غالـب ضيـف الله">
-                                    <img src="عبدالعزيز.jpeg" class="podium-avatar tied-second" alt="عبدالعزيز محمد">
-                                    <span class="podium-badge">1</span>
-                                </div>
-                                <span class="podium-name">غالـب & عبدالعزيز</span>
-                                <div class="podium-block">1</div>
-                            </div>
-
-                            <div class="podium-step step-3">
-                                <div class="podium-avatar-wrapper">
-                                    <img src="سلطان%20ساره.png" class="podium-avatar" alt="سـارة سلطـان">
-                                    <span class="podium-badge">3</span>
-                                </div>
-                                <span class="podium-name">سـارة سلطـان</span>
-                                <div class="podium-block">3</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 3. فئة الزهور -->
-                    <div class="category-column">
-                        <h3 class="category-header">فئـة الزهـور </h3>
-
-                        <div class="podium-container">
-                            <div class="podium-step step-2">
-                                <div class="podium-avatar-wrapper">
-                                    <img src="نوف.jpeg" class="podium-avatar" alt="نـوف محمد">
-                                    <span class="podium-badge">2</span>
-                                </div>
-                                <span class="podium-name">نـوف محمد</span>
-                                <div class="podium-block">2</div>
-                            </div>
-
-                            <div class="podium-step step-1">
-                                <div class="podium-avatar-wrapper">
-                                    <img src="الجوري.jpeg" class="podium-avatar" alt="الجـوري عبدالله">
-                                    <span class="podium-badge">1</span>
-                                </div>
-                                <span class="podium-name">الجـوري عبدالله</span>
-                                <div class="podium-block">1</div>
-                            </div>
-
-                            <div class="podium-step step-3">
-                                <div class="podium-avatar-wrapper">
-                                    <img src="ديما.jpeg" class="podium-avatar" alt="ديمـا عبدالله">
-                                    <span class="podium-badge">3</span>
-                                </div>
-                                <span class="podium-name">ديمـا عبدالله</span>
-                                <div class="podium-block">3</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 4. فئة الرواد -->
-                    <div class="category-column">
-                        <h3 class="category-header">فئـة الـرواد </h3>
-
-                        <div class="podium-container">
-                            <div class="podium-step step-2">
-                                <div class="podium-avatar-wrapper">
-                                    <img src="girl-avatar.png" class="podium-avatar" alt="نـوف سعـد">
-                                    <span class="podium-badge">2</span>
-                                </div>
-                                <span class="podium-name">نـوف سعـد</span>
-                                <div class="podium-block">2</div>
-                            </div>
-
-                            <div class="podium-step step-1">
-                                <div class="podium-avatar-wrapper">
-                                    <img src="girl-avatar.png" class="podium-avatar" alt="جـواهـر صاهـود">
-                                    <span class="podium-badge">1</span>
-                                </div>
-                                <span class="podium-name">جـواهـر صاهـود</span>
-                                <div class="podium-block">1</div>
-                            </div>
-
-                            <div class="podium-step step-3 step-tied">
-                                <div class="podium-avatar-wrapper tied-avatars">
-                                    <img src="girl-avatar.png" class="podium-avatar" alt="عايشـه عيـد">
-                                    <img src="girl-avatar.png" class="podium-avatar tied-second" alt="وئـام سعـد">
-                                    <span class="podium-badge">3</span>
-                                </div>
-                                <span class="podium-name">عايشـه & وئـام</span>
-                                <div class="podium-block">3</div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div> <!-- إغلاق العمود الأيسر -->
+            <div class="motivation-btn-row">
+                <a href="IBAN.html" class="btn-transfer-now">حــوّل الأن</a>
+            </div>
         </div>
-    </section>
+
+        <!-- العمود الأيسر: أبطال مصياف قنديل -->
+        <div class="left-column-box champions-section">
+            <h2 class="section-title">أبطال مصياف قنديل 🏆</h2>
+            <div class="categories-wrapper">
+                <div class="category-column">
+                    <h3 class="category-header">فئـة البـراعـم </h3>
+                    <div class="podium-container">
+                        <div class="podium-step step-2">
+                            <div class="podium-avatar-wrapper"><img src="شيخه%20معجب.jpeg" class="podium-avatar"><span class="podium-badge">2</span></div>
+                            <span class="podium-name">شيخـة معجـب</span>
+                            <div class="podium-block">2</div>
+                        </div>
+                        <div class="podium-step step-1">
+                            <div class="podium-avatar-wrapper"><img src="شيهانه.png" class="podium-avatar"><span class="podium-badge">1</span></div>
+                            <span class="podium-name">شيهـانه محمـد</span>
+                            <div class="podium-block">1</div>
+                        </div>
+                        <div class="podium-step step-3">
+                            <div class="podium-avatar-wrapper"><img src="فهاد.png" class="podium-avatar"><span class="podium-badge">3</span></div>
+                            <span class="podium-name">فهـاد إبراهيـم</span>
+                            <div class="podium-block">3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- قسم قنديل في أرقام -->
 <section id="stats" class="stats-section">
     <div class="container">
         <div class="section-title">
             <h2><i class="fa-solid fa-chart-line"></i> قنديل في أرقام</h2>
-            <p>حصاد جهود أبطالنا وبطلاتنا  منذ انطلاق قنـديـل</p>
+            <p>حصاد جهود أبطالنا وبطلاتنا منذ انطلاق قنـديـل</p>
         </div>
         <div class="stats-grid">
             <div class="stat-item">
@@ -282,15 +136,11 @@
                 <h3>أكثر من <span class="counter" data-target="1000">1000</span></h3>
                 <p>مشترك متميز</p>
             </div>
-
             <div class="stat-item">
-                <div class="stat-icon">
-                    <img src="ايقونة%20قران%20(2).png" alt="أيقونة القرآن" class="quran-custom-icon">
-                </div>
+                <div class="stat-icon"><img src="ايقونة%20قران%20(2).png" class="quran-custom-icon"></div>
                 <h3>أكثر من <span class="counter" data-target="10">10</span></h3>
                 <p>أجـزاء محفـوظة</p>
             </div>
-
             <div class="stat-item">
                 <div class="stat-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
                 <h3>أكثر من <span class="counter" data-target="200">200</span></h3>
@@ -308,45 +158,31 @@
             <p>شاركينا انطباعكِ وأثر تجربة طفلكِ معنا في برنامج قنديل</p>
         </div>
 
-        <!-- نموذج كتابة تعليق -->
         <div class="review-form-card">
-            <form id="reviewForm">
+            <form id="reviewForm" onsubmit="return addReview(event)">
                 <div class="form-group-row">
                     <input type="text" id="momName" placeholder="اسم الأم (مثال: أم عبدالمجيد)" required>
-                    
                 </div>
                 <textarea id="reviewText" rows="3" placeholder="اكتبي رسالتكِ أو انطباعكِ عن البرنامج..." required></textarea>
-                <button type="button" onclick="addReview(event)" class="submit-review-btn">
+                <button type="submit" class="submit-review-btn">
                     إرسال الرسالة <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </form>
         </div>
 
-        <!-- عرض بطاقات التعليقات -->
         <div class="reviews-grid" id="reviewsGrid">
-            <!-- ستظهر آراء الأمهات هنا -->
+            <!-- تظهر الرسائل هنا فوراً -->
         </div>
     </div>
 </section>
 
-<!-- الفوتر -->
 <footer>
     <div class="container footer-container">
         <div class="footer-socials">
-            <a href="https://wa.me/966579517751" target="_blank" title="واتساب المبادرة" class="footer-icon-link">
-                <i class="fa-brands fa-whatsapp"></i>
-            </a>
-            <a href="https://www.instagram.com/qandeel_fund" target="_blank" title="انستقرام المبادرة" class="footer-icon-link">
-             <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.tiktok.com/@qandeel_fund?_r=1&_t=ZS-97tT4upqG7I" target="_blank" title="تيك توك المبادرة" class="footer-icon-link">
-            <i class="fa-brands fa-tiktok"></i>
-            </a>
-            <a href="https://chat.whatsapp.com/KPNoigsbJTEI9pqOmeyUr5?mode=gi_t" target="_blank" title="القروب العام" class="footer-icon-link join-icon">
-                <i class="fa-solid fa-user-plus"></i> <span class="icon-text">انضم للقروب العام</span>
-            </a>
+            <a href="https://wa.me/966579517751" target="_blank" class="footer-icon-link"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/qandeel_fund" target="_blank" class="footer-icon-link"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@qandeel_fund?_r=1&_t=ZS-97tT4upqG7I" target="_blank" class="footer-icon-link"><i class="fa-brands fa-tiktok"></i></a>
         </div>
-
         <div class="footer-rights">
             <p>جميع الحقوق محفوظة لقنـديل © 2026</p>
         </div>
@@ -355,74 +191,29 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. حساب المبلغ المتبقي تلقائياً
+    // حساب المبلغ المتبقي
     const current = parseFloat(document.getElementById("current-amount")?.innerText) || 0;
     const goal = parseFloat(document.getElementById("goal-amount")?.innerText) || 0;
-
     let remaining = goal - current;
     if (remaining < 0) remaining = 0;
-
+    
     const remainingEl = document.getElementById("remaining-amount");
     if (remainingEl) remainingEl.innerText = remaining;
-
-    // 2. إذا اكتمل المبلغ (المتبقي 0)، يتم تشغيل الاحتفال عند التمرير للخانة
-    if (remaining === 0) {
-        const targetSection = document.querySelector(".progress-container-box");
-
-        if (targetSection) {
-            let hasCelebrated = false;
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !hasCelebrated) {
-                        hasCelebrated = true;
-                        launchCelebration();
-                    }
-                });
-            }, { threshold: 0.5 });
-
-            observer.observe(targetSection);
-        }
-    }
-
-    // دالة إطلاق قصاصات الاحتفال
-    function launchCelebration() {
-        var count = 200;
-        var defaults = {
-            origin: { y: 0.7 },
-            colors: ['#c5a059', '#b38b3f', '#2D4A3E', '#ffffff']
-        };
-
-        function fire(particleRatio, opts) {
-            confetti(Object.assign({}, defaults, opts, {
-                particleCount: Math.floor(count * particleRatio)
-            }));
-        }
-
-        fire(0.25, { spread: 26, startVelocity: 55 });
-        fire(0.2,  { spread: 60 });
-        fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
-        fire(0.1,  { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
-        fire(0.1,  { spread: 120, startVelocity: 45 });
-    }
 });
 
-// دالة إضافة رسالة جديدة من الأمهات
-// دالة إضافة رسالة جديدة من الأمهات
+// دالة إرسال وعرض الرسالة مباشرة
 function addReview(e) {
-    // منع إعادة تحميل الصفحة عند الضغط على زر الإرسال
     if (e) e.preventDefault();
 
     const momName = document.getElementById('momName').value.trim();
-    const childName = document.getElementById('childName').value.trim();
     const reviewText = document.getElementById('reviewText').value.trim();
 
-    if (!momName || !childName || !reviewText) {
+    if (!momName || !reviewText) {
         alert("لطفاً اكتمالي كافة الحقول قبل الإرسال 🌱");
         return false;
     }
 
-    // إنشاء بطاقة التعليق
+    // إنشاء بطاقة تعليق وإضافتها لأعلى القائمة
     const reviewCard = document.createElement('div');
     reviewCard.className = 'review-card';
     reviewCard.innerHTML = `
@@ -430,27 +221,22 @@ function addReview(e) {
             <div class="review-avatar"><i class="fa-solid fa-heart"></i></div>
             <div class="review-info">
                 <h4>${momName}</h4>
-                <span>أم المشارك/ـة: ${childName}</span>
             </div>
         </div>
         <p class="review-text">"${reviewText}"</p>
     `;
 
-    // إدراج التعليق في أعلى القائمة
     const reviewsGrid = document.getElementById('reviewsGrid');
     if (reviewsGrid) {
         reviewsGrid.insertBefore(reviewCard, reviewsGrid.firstChild);
     }
 
-    // تفريغ النموذج بعد الإرسال بنجاح
+    alert("تم إرسال رسالتكِ ونشرها بنجاح! 🤍");
     document.getElementById('reviewForm').reset();
-
     return false;
 }
 </script>
 
-<!-- استدعاء ملف الجافا سكريبت للعدادات وشريط التقدم -->
 <script type="text/javascript" src="./script.js?v=1.2"></script>
-
 </body>
 </html>
