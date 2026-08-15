@@ -154,16 +154,16 @@
 <section class="reviews-section" id="reviews">
     <div class="container">
         <div class="section-title">
-            <h2><i class="fa-solid fa-heart"></i> رسائل وآراء أمهات قنديل 💌</h2>
-            <p>شاركينا انطباعكِ وأثر تجربة طفلكِ معنا في برنامج قنديل</p>
+            <h2><i class="fa-solid fa-heart"></i> مـاذا قالـوا عـن قنديـل 💌</h2>
+            <p>شاركينا انطباعك وأثر تجربتك معنا في برنامج قنديل</p>
         </div>
 
         <div class="review-form-card">
             <form id="reviewForm" onsubmit="return addReview(event)">
                 <div class="form-group-row">
-                    <input type="text" id="momName" placeholder="اسم الأم (مثال: أم عبدالمجيد)" required>
+                    <input type="text" id="momName" placeholder="اسـم المشاركـ/ـة " required>
                 </div>
-                <textarea id="reviewText" rows="3" placeholder="اكتبي رسالتكِ أو انطباعكِ عن البرنامج..." required></textarea>
+                <textarea id="reviewText" rows="3" placeholder=" اكتب رسالتك أو انطباعك عن البرنامج ..." required></textarea>
                 <button type="submit" class="submit-review-btn">
                     إرسال الرسالة <i class="fa-solid fa-paper-plane"></i>
                 </button>
@@ -209,7 +209,7 @@ function addReview(e) {
     const reviewText = document.getElementById('reviewText').value.trim();
 
     if (!momName || !reviewText) {
-        alert("لطفاً اكتمالي كافة الحقول قبل الإرسال 🌱");
+        alert("لطفاً اكمل كافة الحقول قبل الإرسال 🌱");
         return false;
     }
 
@@ -231,7 +231,7 @@ function addReview(e) {
         reviewsGrid.insertBefore(reviewCard, reviewsGrid.firstChild);
     }
 
-    alert("تم إرسال رسالتكِ ونشرها بنجاح! 🤍");
+    alert("شكـرًا تم إرسال رسالتكِ بنجاح ! 🕯️");
     document.getElementById('reviewForm').reset();
     return false;
 }
