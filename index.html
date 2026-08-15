@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="styleq.css">
     <!-- مكتبة قصاصات الاحتفال الخفيفة -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- مكتبة Supabase الرسمية -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <header>
@@ -164,14 +166,14 @@
                     <input type="text" id="momName" placeholder="اسـم المشاركـ/ـة " required>
                 </div>
                 <textarea id="reviewText" rows="3" placeholder=" اكتب رسالتك أو انطباعك عن البرنامج ..." required></textarea>
-                <button type="submit" class="submit-review-btn">
+                <button type="submit" id="submitBtn" class="submit-review-btn">
                     إرسال الرسالة <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </form>
         </div>
 
         <div class="reviews-grid" id="reviewsGrid">
-            <!-- تظهر الرسائل هنا فوراً -->
+            <!-- جاري تحميل الرسائل... -->
         </div>
     </div>
 </section>
@@ -190,8 +192,13 @@
 </footer>
 
 <script>
+// الربط مع مشروع Supabase الخاص بكِ
+const SUPABASE_URL = 'https://xdowyhritvgnfsgvfjxf.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_ZgUoyo5AaEyX9qrDGy3eOQ_VclCKdwu';
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
 document.addEventListener("DOMContentLoaded", function() {
-    // حساب المبلغ المتبقي
+    // حساب المبلغ المتبقي تلقائياً
     const current = parseFloat(document.getElementById("current-amount")?.innerText) || 0;
     const goal = parseFloat(document.getElementById("goal-amount")?.innerText) || 0;
     let remaining = goal - current;
@@ -199,40 +206,84 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const remainingEl = document.getElementById("remaining-amount");
     if (remainingEl) remainingEl.innerText = remaining;
+
+    // جلب الرسائل المخزنة فور فتح الصفحة
+    loadReviews();
 });
 
-// دالة إرسال وعرض الرسالة مباشرة
-function addReview(e) {
+// دالة جلب الرسائل من قاعدة البيانات
+async function loadReviews() {
+    const reviewsGrid = document.getElementById('reviewsGrid');
+    if (!reviewsGrid) return;
+
+    reviewsGrid.innerHTML = '<p style="text-align: center; color: #888; width: 100%;">جاري تحميل الرسائل... 🌱</p>';
+
+    const { data: reviews, error } = await supabaseClient
+        .from('reviews')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+    if (error) {
+        console.error('خطأ في جلب الرسائل:', error);
+        reviewsGrid.innerHTML = '<p style="text-align: center; color: #888; width: 100%;">تعذر تحميل الرسائل حالياً.</p>';
+        return;
+    }
+
+    reviewsGrid.innerHTML = '';
+
+    if (!reviews || reviews.length === 0) {
+        reviewsGrid.innerHTML = '<p style="text-align: center; color: #888; width: 100%;">كن أول من يشاركنا انطباعه 🤍</p>';
+        return;
+    }
+
+    reviews.forEach(review => {
+        const reviewCard = document.createElement('div');
+        reviewCard.className = 'review-card';
+        reviewCard.innerHTML = `
+            <div class="review-header">
+                <div class="review-avatar"><i class="fa-solid fa-heart"></i></div>
+                <div class="review-info">
+                    <h4>${review.mom_name}</h4>
+                </div>
+            </div>
+            <p class="review-text">"${review.review_text}"</p>
+        `;
+        reviewsGrid.appendChild(reviewCard);
+    });
+}
+
+// دالة إرسال وحفظ الرسالة في Supabase
+async function addReview(e) {
     if (e) e.preventDefault();
 
     const momName = document.getElementById('momName').value.trim();
     const reviewText = document.getElementById('reviewText').value.trim();
+    const submitBtn = document.getElementById('submitBtn');
 
     if (!momName || !reviewText) {
         alert("لطفاً اكمل كافة الحقول قبل الإرسال 🌱");
         return false;
     }
 
-    // إنشاء بطاقة تعليق وإضافتها لأعلى القائمة
-    const reviewCard = document.createElement('div');
-    reviewCard.className = 'review-card';
-    reviewCard.innerHTML = `
-        <div class="review-header">
-            <div class="review-avatar"><i class="fa-solid fa-heart"></i></div>
-            <div class="review-info">
-                <h4>${momName}</h4>
-            </div>
-        </div>
-        <p class="review-text">"${reviewText}"</p>
-    `;
+    submitBtn.disabled = true;
+    submitBtn.innerText = "جاري الإرسال...";
 
-    const reviewsGrid = document.getElementById('reviewsGrid');
-    if (reviewsGrid) {
-        reviewsGrid.insertBefore(reviewCard, reviewsGrid.firstChild);
+    const { error } = await supabaseClient
+        .from('reviews')
+        .insert([{ mom_name: momName, review_text: reviewText }]);
+
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = 'إرسال الرسالة <i class="fa-solid fa-paper-plane"></i>';
+
+    if (error) {
+        console.error('خطأ في حفظ الرسالة:', error);
+        alert('حدث خطأ أثناء إرسال الرسالة، يرجى المحاولة لاحقاً.');
+        return false;
     }
 
-    alert("شكـرًا تم إرسال رسالتكِ بنجاح ! 🕯️");
     document.getElementById('reviewForm').reset();
+    alert("شكـرًا تم إرسال رسالتكِ بنجاح ! 🕯️");
+    loadReviews(); // إعادة جلب الرسائل مباشرة لتظهر الجديدة بأعلى القائمة
     return false;
 }
 </script>
